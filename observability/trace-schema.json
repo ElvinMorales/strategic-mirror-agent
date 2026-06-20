@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/trace-schema.json",
+  "title": "Strategic Mirror Trace",
+  "type": "object",
+  "required": ["trace_id", "timestamp", "input_classification", "guardrail_checks", "output_summary"],
+  "properties": {
+    "trace_id": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "input_classification": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["memory", "state", "knowledge", "output_only", "ignored"]
+      }
+    },
+    "guardrail_checks": {
+      "type": "object",
+      "properties": {
+        "confidentiality": { "type": "string" },
+        "voice": { "type": "string" },
+        "connector_safety": { "type": "string" },
+        "no_psychoanalysis": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "output_summary": { "type": "string" }
+  },
+  "additionalProperties": false
+}

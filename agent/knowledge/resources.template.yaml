@@ -1,0 +1,7 @@
+resources:
+  - title: Example communication framework
+    type: public_reference
+    location: https://example.com/resource
+    summary: Replace with a concise summary in a private instance.
+    privacy_sensitivity: public
+    review_cadence: annual

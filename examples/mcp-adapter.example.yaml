@@ -1,0 +1,15 @@
+mcp_adapter:
+  id: example_mcp_readonly_notes
+  host: mcp
+  tier: 1
+  description: Synthetic read-only MCP resource mapping.
+  resources:
+    - name: synthetic_notes
+      access: read_only
+      allowlist:
+        - examples/synthetic-memory/
+  tools: []
+  approval_required_for:
+    - writes
+    - external_side_effects
+  public_safety_notes: Synthetic example only. Do not include real MCP server credentials.

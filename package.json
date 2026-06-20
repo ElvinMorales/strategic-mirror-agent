@@ -1,0 +1,21 @@
+{
+  "name": "strategic-mirror-agent",
+  "version": "0.1.0",
+  "description": "A file-first scaffold for a personal career and workplace communication coach.",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "lint:md": "node scripts/lint-md.mjs",
+    "validate:json": "node scripts/validate-json.mjs",
+    "validate:jsonl": "node scripts/validate-jsonl.mjs",
+    "validate:yaml": "node scripts/validate-yaml.mjs",
+    "validate:schemas": "node scripts/validate-schema-examples.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "validate": "npm run lint:md && npm run validate:json && npm run validate:jsonl && npm run validate:yaml && npm run validate:schemas && npm run check:links"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "yaml": "^2.7.0"
+  }
+}

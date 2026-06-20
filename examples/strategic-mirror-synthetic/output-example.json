@@ -1,0 +1,16 @@
+{
+  "situation_read": "This is an ownership clarification moment, not an invitation to quietly become the tracker.",
+  "content": [
+    {
+      "label": "Preserve the relationship, protect the lane",
+      "body": "Morgan, quick heads-up: I see one launch readiness risk around dependency tracking. I can summarize what I am seeing, but can you confirm whether Jordan owns the tracker from here? That will help me keep my update crisp and avoid duplicating work."
+    }
+  ],
+  "strategy": "The draft gives Morgan early warning while making ownership explicit.",
+  "tradeoffs": "It protects Alex from absorbing coordination work, but it may require Morgan to resolve ownership sooner.",
+  "recommendation": "Use this version if the goal is to stay helpful without becoming the default owner.",
+  "risks": [
+    "Morgan may still ask Alex to coordinate.",
+    "Jordan's ownership is still unconfirmed."
+  ]
+}

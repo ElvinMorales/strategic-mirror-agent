@@ -1,0 +1,14 @@
+{
+  "name": "Strategic Mirror Agent",
+  "description": "Synthetic agent card for a file-first workplace communication and career positioning coach.",
+  "version": "0.1.0",
+  "capabilities": [
+    "draft_message",
+    "navigate_situation",
+    "career_positioning",
+    "reconcile_context",
+    "spawn_focused_chat"
+  ],
+  "public_safe": true,
+  "connector_posture": "docs_templates_schemas_only"
+}

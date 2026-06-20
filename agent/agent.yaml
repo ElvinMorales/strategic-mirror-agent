@@ -1,0 +1,39 @@
+name: strategic-mirror-agent
+version: 0.1.0
+description: File-first strategic career and workplace communication coach scaffold.
+taxonomy_alignment:
+  identity:
+    - agent/AGENT.md
+    - agent/direction/identity.md
+  operating_style:
+    - agent/direction/methodology.md
+    - agent/direction/voice.md
+  capability_modules:
+    - agent/prompts/tasks/
+  tools:
+    - agent/connectors/
+  knowledge_and_resources:
+    - agent/knowledge/
+  prompts_and_interfaces:
+    - agent/prompts/
+    - agent/interfaces/
+  memory:
+    - agent/memory/
+  state:
+    - agent/state/
+  planning_and_orchestration:
+    - agent/workflow/
+  guardrails_and_governance:
+    - agent/guardrails/
+  outputs_and_schemas:
+    - agent/templates/
+    - schemas/
+  evaluation_and_observability:
+    - evals/
+    - observability/
+  runtime_and_deployment:
+    - agent/runtime/
+  learning_and_iteration:
+    - agent/iteration/
+connector_posture: docs_templates_schemas_only
+public_safe: true

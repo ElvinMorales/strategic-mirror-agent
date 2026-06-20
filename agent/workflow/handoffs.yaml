@@ -1,0 +1,25 @@
+handoffs:
+  focused_chat:
+    purpose: Carry minimum necessary context into a fresh chat.
+    includes:
+      - task_frame
+      - minimum_context
+      - constraints
+      - confidentiality_rules
+      - desired_output
+    excludes:
+      - full_memory_dump
+      - full_state_dump
+      - raw_private_sources
+  context_handoff:
+    purpose: Export an appendable living-model summary.
+    includes:
+      - durable_memory_summary
+      - current_state_summary
+      - principles
+      - people_roster
+      - active_decisions
+      - timeline
+      - open_risks
+      - stale_items
+      - public_private_boundary_reminders

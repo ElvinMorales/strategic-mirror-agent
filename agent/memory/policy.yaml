@@ -1,0 +1,34 @@
+memory_policy:
+  purpose: Store durable, slowly changing context in private runtime instances.
+  public_repo_rule: Templates only. No real memory.
+  allowed_categories:
+    - communication_preferences
+    - career_goals
+    - working_style
+    - recurring_strengths
+    - recurring_traps
+    - durable_values
+    - professional_relationships
+    - trusted_collaborators
+    - career_narrative
+    - lessons_learned
+  required_fields:
+    - entry
+    - category
+    - source
+    - confidence
+    - date_added
+    - review_cadence
+    - privacy_sensitivity
+    - public_use_permission
+  excluded_material:
+    - current_task_status
+    - temporary_deadlines
+    - live_project_uncertainty
+    - short_term_emotional_spikes
+    - raw_logs
+    - full_message_threads
+    - sensitive_content_that_should_not_be_stored
+  review:
+    default_cadence: quarterly
+    stale_action: revise_or_remove

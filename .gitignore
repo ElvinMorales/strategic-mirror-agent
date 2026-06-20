@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment and local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*credential*
+*credentials*
+*secret*
+*secrets*
+*token*
+*tokens*
+
+# Private runtime material
+private/
+runtime/private/
+agent/runtime/private/
+sessions/
+traces/
+exports/
+*.local.yaml
+*.local.yml
+*.local.json
+
+# Raw connector exports
+raw-email-exports/
+raw-calendar-exports/
+raw-document-exports/
+email-export*/
+calendar-export*/
+document-export*/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

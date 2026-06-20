@@ -1,0 +1,19 @@
+connectors:
+  - id: synthetic_local_notes
+    name: Synthetic local notes
+    tier: 1
+    host: obsidian
+    enabled: false
+    source_allowlist:
+      - examples/synthetic-memory/
+      - examples/synthetic-state/
+    read_permissions:
+      - markdown_read
+    write_permissions: []
+    approval_required_for:
+      - all_writes
+      - external_side_effects
+    memory_write_behavior: propose_only
+    state_write_behavior: propose_only
+    secrets_handling: none
+    public_safety_notes: Synthetic example only.

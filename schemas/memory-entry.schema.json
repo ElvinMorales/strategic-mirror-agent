@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/memory-entry.schema.json",
+  "title": "Memory Entry",
+  "type": "object",
+  "required": [
+    "entry",
+    "category",
+    "source",
+    "confidence",
+    "date_added",
+    "review_cadence",
+    "privacy_sensitivity",
+    "public_use_permission"
+  ],
+  "properties": {
+    "entry": { "type": "string" },
+    "category": { "type": "string" },
+    "source": { "type": "string" },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "date_added": { "type": "string", "format": "date" },
+    "review_cadence": { "type": "string" },
+    "privacy_sensitivity": { "type": "string", "enum": ["public", "private", "sensitive"] },
+    "public_use_permission": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

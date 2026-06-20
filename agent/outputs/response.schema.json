@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/response.schema.json",
+  "title": "Strategic Mirror Response",
+  "type": "object",
+  "required": ["situation_read", "content", "strategy", "tradeoffs", "recommendation", "risks"],
+  "properties": {
+    "situation_read": { "type": "string" },
+    "content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "body"],
+        "properties": {
+          "label": { "type": "string" },
+          "body": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "strategy": { "type": "string" },
+    "tradeoffs": { "type": "string" },
+    "recommendation": { "type": "string" },
+    "risks": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

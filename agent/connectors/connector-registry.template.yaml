@@ -1,0 +1,17 @@
+connectors:
+  - id: example_manual_input
+    name: Manual input
+    tier: 0
+    host: any
+    enabled: true
+    source_allowlist:
+      - user_paste
+    read_permissions:
+      - user_supplied_context
+    write_permissions: []
+    approval_required_for:
+      - all_external_side_effects
+    memory_write_behavior: propose_only
+    state_write_behavior: propose_only
+    secrets_handling: none
+    public_safety_notes: Synthetic template only. Replace in a private runtime instance.

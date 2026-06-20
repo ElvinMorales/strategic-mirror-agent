@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/state-entry.schema.json",
+  "title": "State Entry",
+  "type": "object",
+  "required": [
+    "item",
+    "owner",
+    "status",
+    "clock_or_deadline",
+    "next_action",
+    "uncertainty",
+    "stale_after",
+    "related_memory_refs"
+  ],
+  "properties": {
+    "item": { "type": "string" },
+    "owner": { "type": "string" },
+    "status": { "type": "string" },
+    "clock_or_deadline": { "type": "string" },
+    "next_action": { "type": "string" },
+    "uncertainty": { "type": "string" },
+    "stale_after": { "type": "string", "format": "date" },
+    "related_memory_refs": { "type": "array", "items": { "type": "string" } },
+    "related_connector_source": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}

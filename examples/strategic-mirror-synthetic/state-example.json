@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "item": "Launch readiness risk summary",
+      "owner": "Alex",
+      "status": "drafting",
+      "deadline": "2026-02-02",
+      "next_action": "Ask Morgan to confirm dependency tracking owner.",
+      "uncertainty": "Jordan may own final tracking, but this is not confirmed.",
+      "stale_after": "2026-02-03",
+      "related_memory_refs": ["concise_asks", "ownership_clarity"],
+      "related_connector_source": null
+    }
+  ]
+}

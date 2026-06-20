@@ -1,0 +1,14 @@
+handoffs:
+  - id: launch_readiness_focused_chat
+    type: focused_chat
+    task_frame: Draft a concise message about launch readiness ownership.
+    minimum_context:
+      - Alex is a contributor, not confirmed owner.
+      - Morgan values early risk warnings.
+      - Jordan may own dependency tracking.
+    constraints:
+      - Keep it suitable for chat.
+      - Do not imply Alex owns the workstream.
+    confidentiality_rules:
+      - Synthetic example only.
+    desired_output: A concise draft plus strategy note.
