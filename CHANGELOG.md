@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add a public communication package with release note, social post,
+  field-note, and repo positioning drafts.
 - Add an install guide for adapting the scaffold into Claude web, Claude Code,
   and local Markdown workflows.
 - Add post-sprint documentation navigation for key scaffold docs, examples,
