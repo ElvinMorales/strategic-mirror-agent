@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add negative eval cases for voice, Memory/State, connector, boundary,
+  public-safety, and psychoanalysis failure modes.
 - Add GitHub issue and pull request templates for artifact, safety, and
   validation reviews.
 - Expand the private instance starter guide with copy steps, Git safety,
