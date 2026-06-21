@@ -28,6 +28,21 @@ For a draft, the agent should not stop at the message. It should include the pos
 - Eval cases and rubric in `evals/`
 - Local validation scripts in `scripts/`
 
+## Documentation Map
+
+Start with the [docs index](docs/README.md) for the current navigation view.
+Common reader paths include the [v0.1.0 release notes](docs/release-notes-v0.1.0.md),
+the [artifact map](docs/artifact-map.md), the
+[private instance guide](docs/private-instance-guide.md), the
+[framework mapping notes](docs/framework-mapping.md), and the
+[v0.2.0 roadmap](docs/roadmap-v0.2.0.md).
+
+For implementation boundaries, see the
+[connector adapter decision](docs/decisions/0001-connectors-as-adapters.md).
+For public-safe examples and checks, see the
+[walkthrough examples](examples/walkthroughs/),
+[schema examples](examples/schema-instances/), and [evals](evals/).
+
 ## Taxonomy Alignment
 
 The scaffold aligns to the stable 14-bucket agent artifact taxonomy:

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add post-sprint documentation navigation for key scaffold docs, examples,
+  decisions, templates, evals, and roadmap artifacts.
 - Add a v0.2.0 roadmap note outlining must-have, maybe-later, and non-goal scope.
 - Add framework mapping notes for adapting the scaffold across common agent host environments.
 - Add valid synthetic schema instance examples for Memory, State, connector registry, and response outputs.
