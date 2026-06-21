@@ -1,0 +1,32 @@
+{
+  "situation_read": "This is an ownership clarification moment, not a request to absorb coordination work.",
+  "content": [
+    {
+      "label": "Recommended direction",
+      "body": "Keep the message concise, ask for the owner decision directly, and avoid volunteering to maintain the tracker."
+    },
+    {
+      "label": "Draft message",
+      "body": "Morgan, I can send the status note once ownership is clear. Should Jordan own dependency tracking from here, or should I frame it as an open decision for Friday?"
+    },
+    {
+      "label": "Memory update proposal",
+      "body": "Consider saving a durable preference that Alex wants ownership questions made explicit before taking on coordination work."
+    },
+    {
+      "label": "State update proposal",
+      "body": "Track the ExampleCo status note as active until ownership is confirmed or the 2026-06-27 stale-after date passes."
+    },
+    {
+      "label": "Public safety note",
+      "body": "All names, organization references, and details are synthetic."
+    }
+  ],
+  "strategy": "The response protects helpfulness while making the decision point visible.",
+  "tradeoffs": "It may slow the note until Morgan clarifies ownership, but it reduces the risk that Alex becomes the default tracker.",
+  "recommendation": "Use the direct question and keep any follow-up focused on owner, deadline, and next action.",
+  "risks": [
+    "Morgan may still ask Alex to coordinate.",
+    "Jordan's role may remain ambiguous after the first reply."
+  ]
+}
