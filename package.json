@@ -1,6 +1,6 @@
 {
   "name": "strategic-mirror-agent",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A file-first scaffold for a personal career and workplace communication coach.",
   "type": "module",
   "private": false,

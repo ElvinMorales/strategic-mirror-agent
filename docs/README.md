@@ -40,6 +40,8 @@ content.
 
 ## Release And Roadmap
 
+- [Release notes v0.2.0](release-notes-v0.2.0.md) summarizes the docs/scaffold
+  release hardening work for `v0.2.0`.
 - [Roadmap v0.2.0](roadmap-v0.2.0.md) outlines likely next public scaffold
   improvements and non-goals.
 - [Release prep checklist](release-prep-checklist.md) collects final release,

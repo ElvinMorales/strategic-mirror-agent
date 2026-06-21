@@ -22,8 +22,9 @@ post-`v0.1.0` work added the install/readiness layer, stronger navigation,
 private instance guidance, framework mapping, schema examples, negative eval
 coverage, public communication material, and release preparation.
 
-The exact version should still be confirmed manually before tagging, especially
-while `package.json` still reports `0.1.0`.
+The exact version should still be confirmed manually before tagging. This
+release hardening pass updates `package.json` to `0.2.0`, but release tagging
+and GitHub Release creation remain manual after merge.
 
 ```markdown
 Recommended posture: docs/scaffold release

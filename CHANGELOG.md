@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0
+
 - Add a release-prep checklist with final release, social, and public-safety
   review material.
 - Add a public communication package with release note, social post,
@@ -21,8 +23,9 @@
   validation reviews.
 - Expand the private instance starter guide with copy steps, Git safety,
   local-only connector guidance, and first-run checklists.
-- Add a visual artifact map for the 14-bucket taxonomy alignment.
 - Add a synthetic public-safe walkthrough for a workplace boundary-setting message.
+- Add a visual artifact map for the 14-bucket taxonomy alignment.
+- Add release notes for the initial public scaffold.
 
 ## 0.1.0
 
