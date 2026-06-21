@@ -8,6 +8,7 @@ Names such as Alex, Morgan, Jordan, Taylor, and ExampleCo are placeholders. Repl
 
 - Synthetic Memory examples
 - Synthetic State examples
+- Valid JSON schema instance examples in [schema-instances/](schema-instances/)
 - Connector registry example
 - Agent card example
 - MCP adapter example

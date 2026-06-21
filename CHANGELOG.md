@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add valid synthetic schema instance examples for Memory, State, connector registry, and response outputs.
 - Add an architecture decision record documenting connectors as adapter-layer
   artifacts.
 - Add negative eval cases for voice, Memory/State, connector, boundary,

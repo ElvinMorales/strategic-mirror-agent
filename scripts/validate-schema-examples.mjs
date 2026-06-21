@@ -18,6 +18,26 @@ async function readYaml(filePath) {
 
 const checks = [
   {
+    schema: "schemas/memory-entry.schema.json",
+    example: "examples/schema-instances/memory-entry.valid.json",
+    reader: readJson
+  },
+  {
+    schema: "schemas/state-entry.schema.json",
+    example: "examples/schema-instances/state-entry.valid.json",
+    reader: readJson
+  },
+  {
+    schema: "schemas/connector-registry.schema.json",
+    example: "examples/schema-instances/connector-registry.valid.json",
+    reader: readJson
+  },
+  {
+    schema: "schemas/response.schema.json",
+    example: "examples/schema-instances/response.valid.json",
+    reader: readJson
+  },
+  {
     schema: "schemas/response.schema.json",
     example: "examples/strategic-mirror-synthetic/output-example.json",
     reader: readJson
@@ -30,10 +50,19 @@ const checks = [
 ];
 
 const failures = [];
+const validators = new Map();
+
+async function getValidator(schemaPath) {
+  if (!validators.has(schemaPath)) {
+    const schema = await readJson(schemaPath);
+    validators.set(schemaPath, ajv.compile(schema));
+  }
+
+  return validators.get(schemaPath);
+}
 
 for (const check of checks) {
-  const schema = await readJson(check.schema);
-  const validate = ajv.compile(schema);
+  const validate = await getValidator(check.schema);
   const example = await check.reader(check.example);
   if (!validate(example)) {
     failures.push(`${check.example} failed ${check.schema}: ${ajv.errorsText(validate.errors)}`);

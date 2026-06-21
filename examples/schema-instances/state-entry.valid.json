@@ -1,0 +1,14 @@
+{
+  "item": "ExampleCo project update needs ownership clarification before the next status note.",
+  "owner": "Alex",
+  "status": "active_drafting",
+  "clock_or_deadline": "Status note due 2026-06-26",
+  "next_action": "Ask Morgan whether Jordan owns dependency tracking or only review input.",
+  "uncertainty": "Dependency ownership is not confirmed, so treat the current plan as provisional.",
+  "stale_after": "2026-06-27",
+  "related_memory_refs": [
+    "communication_preference.strategic_move_first",
+    "boundary_pattern.ownership_clarity"
+  ],
+  "related_connector_source": null
+}
