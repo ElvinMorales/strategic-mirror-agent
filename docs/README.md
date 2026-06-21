@@ -42,6 +42,8 @@ content.
 
 - [Roadmap v0.2.0](roadmap-v0.2.0.md) outlines likely next public scaffold
   improvements and non-goals.
+- [Release prep checklist](release-prep-checklist.md) collects final release,
+  publication, and public-safety checks before external announcement.
 - [Public communication package](public-communication-package.md) collects
   draft release, social, and field-note copy for communicating the scaffold
   safely.

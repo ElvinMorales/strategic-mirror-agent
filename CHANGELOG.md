@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add a release-prep checklist with final release, social, and public-safety
+  review material.
 - Add a public communication package with release note, social post,
   field-note, and repo positioning drafts.
 - Add an install guide for adapting the scaffold into Claude web, Claude Code,
