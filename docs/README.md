@@ -42,6 +42,9 @@ content.
 
 - [Roadmap v0.2.0](roadmap-v0.2.0.md) outlines likely next public scaffold
   improvements and non-goals.
+- [Public communication package](public-communication-package.md) collects
+  draft release, social, and field-note copy for communicating the scaffold
+  safely.
 - [Changelog](../CHANGELOG.md) tracks public scaffold changes.
 
 ## Public Safety
