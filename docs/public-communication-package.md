@@ -103,11 +103,11 @@ local environment values, or private connector configs.
 
 Title:
 
-Strategic Mirror Agent public scaffold v0.1.0
+Strategic Mirror Agent public scaffold release
 
 Draft:
 
-This release publishes the initial public scaffold for Strategic Mirror Agent,
+This release shares the current public scaffold for Strategic Mirror Agent,
 a file-first personal workplace communication and career-coaching agent.
 
 The repo is not a hosted app or production workplace system. It is a
