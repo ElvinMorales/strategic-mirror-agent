@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add a v0.2.0 roadmap note outlining must-have, maybe-later, and non-goal scope.
 - Add framework mapping notes for adapting the scaffold across common agent host environments.
 - Add valid synthetic schema instance examples for Memory, State, connector registry, and response outputs.
 - Add an architecture decision record documenting connectors as adapter-layer
