@@ -5,6 +5,8 @@ content.
 
 ## Start Here
 
+- [Install guide](../INSTALL.md) explains how to adapt the public scaffold into
+  Claude web, Claude Code, or local Markdown workflows.
 - [Release notes v0.1.0](release-notes-v0.1.0.md) summarizes the initial public
   scaffold release.
 - [Public safety](public-safety.md) defines what can be published and what must
