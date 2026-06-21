@@ -90,10 +90,12 @@ Claude web.
 Exact Claude Enterprise UI and admin controls may vary. Follow your
 organization's approved data-handling and AI-use policies.
 
-1. Open Claude in the approved workspace.
-2. Create a new project, workspace, or equivalent private context area if your
+1. Download this repository as a ZIP from GitHub, or copy the needed Markdown
+   files from GitHub into a local folder for review.
+2. Open Claude in the approved workspace.
+3. Create a new project, workspace, or equivalent private context area if your
    Claude plan and organization allow it.
-3. Add the core public scaffold references:
+4. Add the core public scaffold references:
    - `agent/AGENT.md`
    - `agent/direction/identity.md`
    - `agent/direction/methodology.md`
@@ -103,15 +105,15 @@ organization's approved data-handling and AI-use policies.
    - `docs/memory-vs-state.md`
    - `docs/private-instance-guide.md`
    - `docs/public-safety.md`
-4. Add only synthetic examples if examples are useful. Do not add real
+5. Add only synthetic examples if examples are useful. Do not add real
    workplace messages, screenshots, transcripts, or document exports.
-5. Create private Memory and State as short notes in the approved private area,
+6. Create private Memory and State as short notes in the approved private area,
    not in this public repo.
-6. Start with manual context. Paste concise, reviewed summaries rather than
+7. Start with manual context. Paste concise, reviewed summaries rather than
    raw message dumps.
-7. Ask Claude to propose Memory or State updates separately. Do not ask it to
+8. Ask Claude to propose Memory or State updates separately. Do not ask it to
    silently save durable context.
-8. Review all outputs before sending, sharing, or storing them.
+9. Review all outputs before sending, sharing, or storing them.
 
 This path references the scaffold from a private Claude context. It does not
 install live connectors, enterprise integrations, or an employer-managed agent.
@@ -121,13 +123,27 @@ install live connectors, enterprise integrations, or an employer-managed agent.
 Use this path if Claude Code is available personally or at work and you are
 comfortable opening a terminal.
 
-Claude Code supports Claude account login and enterprise access paths. It uses
-`CLAUDE.md` files for persistent instructions. Project-level `CLAUDE.md` or
-`.claude/CLAUDE.md` files can be shared if committed, while local/private
-instructions such as `CLAUDE.local.md` should not be committed.
+Claude Code supports Claude account login and enterprise access paths. It reads
+`CLAUDE.md` files at session start and treats them as context, not as a hard
+security boundary. Project-level `CLAUDE.md` or `.claude/CLAUDE.md` files can
+be shared if committed, while local/private instructions such as
+`CLAUDE.local.md` should not be committed.
 
-Claude Code instructions are context, not a hard enforcement boundary. Privacy
-also depends on folder structure, git hygiene, admin policy, and human review.
+Privacy also depends on folder structure, git hygiene, admin policy, and human
+review.
+
+### Install Or Open Claude Code
+
+Use the official
+[Claude Code quickstart](https://code.claude.com/docs/en/quickstart) for the
+current install and login steps.
+
+After Claude Code is available, start it from the private runtime folder:
+
+```powershell
+cd C:\Users\<you>\Documents\strategic-mirror-private
+claude
+```
 
 1. Clone or download the public scaffold.
 2. Create a private runtime folder outside the public repo.
@@ -185,6 +201,22 @@ Do not store credentials, raw traces, or private connector configs.
 Treat connector output as evidence, not truth.
 Follow public/private boundary rules.
 ```
+
+Advanced users can import selected public scaffold files into `CLAUDE.md` with
+Claude Code's `@` file import syntax. Import only public scaffold files:
+
+```markdown
+@..\strategic-mirror-agent\agent\AGENT.md
+@..\strategic-mirror-agent\agent\direction\identity.md
+@..\strategic-mirror-agent\agent\direction\methodology.md
+@..\strategic-mirror-agent\agent\direction\voice.md
+@..\strategic-mirror-agent\docs\memory-vs-state.md
+@..\strategic-mirror-agent\docs\private-instance-guide.md
+@..\strategic-mirror-agent\docs\public-safety.md
+```
+
+Do not import private Memory, live State, `.env`, connector configs, drafts,
+traces, exports, or workplace material.
 
 Keep these private and gitignored in your runtime:
 
@@ -292,6 +324,9 @@ external actions.
 - Do not commit `.env`.
 - Do not add live connectors from this guide.
 - Do not assume Claude's memory systems are hard security boundaries.
+- Do not assume project instructions, `CLAUDE.md`, or uploaded files prevent
+  accidental disclosure by themselves. Use folder boundaries, git hygiene,
+  approved workspaces, and human review.
 - Do not use this as legal, HR, medical, or therapy advice.
 - Do not imply employer endorsement.
 
