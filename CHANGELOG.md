@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add an architecture decision record documenting connectors as adapter-layer
+  artifacts.
 - Add negative eval cases for voice, Memory/State, connector, boundary,
   public-safety, and psychoanalysis failure modes.
 - Add GitHub issue and pull request templates for artifact, safety, and
