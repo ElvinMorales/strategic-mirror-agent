@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add GitHub issue and pull request templates for artifact, safety, and
+  validation reviews.
 - Expand the private instance starter guide with copy steps, Git safety,
   local-only connector guidance, and first-run checklists.
 - Add a visual artifact map for the 14-bucket taxonomy alignment.
