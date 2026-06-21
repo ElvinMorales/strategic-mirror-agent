@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Add a visual artifact map for the 14-bucket taxonomy alignment.
+- Add a synthetic public-safe walkthrough for a workplace boundary-setting message.
 
 ## 0.1.0
 

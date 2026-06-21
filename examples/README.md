@@ -13,3 +13,4 @@ Names such as Alex, Morgan, Jordan, Taylor, and ExampleCo are placeholders. Repl
 - MCP adapter example
 - Strategic mirror synthetic mini-package
 - Sample requests
+- Public-safe walkthroughs, including [boundary-setting-message.md](walkthroughs/boundary-setting-message.md)
