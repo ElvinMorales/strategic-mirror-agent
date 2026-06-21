@@ -109,11 +109,11 @@ roadmap, docs navigation audit, and public communication package.
 
 Start with:
 
-- [README.md](../README.md) for the repo overview.
-- [INSTALL.md](../INSTALL.md) for adapting the scaffold into Claude web,
+- [README.md](https://github.com/ElvinMorales/strategic-mirror-agent/blob/main/README.md) for the repo overview.
+- [INSTALL.md](https://github.com/ElvinMorales/strategic-mirror-agent/blob/main/INSTALL.md) for adapting the scaffold into Claude web,
   Claude Code, or local Markdown workflows.
-- [Public safety](public-safety.md) and
-  [Private instance guide](private-instance-guide.md) before adding any real
+- [Public safety](https://github.com/ElvinMorales/strategic-mirror-agent/blob/main/docs/public-safety.md) and
+  [Private instance guide](https://github.com/ElvinMorales/strategic-mirror-agent/blob/main/docs/private-instance-guide.md) before adding any real
   context.
 
 What is intentionally not included:
