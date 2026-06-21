@@ -31,6 +31,7 @@ For a draft, the agent should not stop at the message. It should include the pos
 ## Documentation Map
 
 Start with the [docs index](docs/README.md) for the current navigation view.
+For setup, see the [install guide](INSTALL.md).
 Common reader paths include the [v0.1.0 release notes](docs/release-notes-v0.1.0.md),
 the [artifact map](docs/artifact-map.md), the
 [private instance guide](docs/private-instance-guide.md), the

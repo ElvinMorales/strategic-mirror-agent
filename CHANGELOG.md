@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add an install guide for adapting the scaffold into Claude web, Claude Code,
+  and local Markdown workflows.
 - Add post-sprint documentation navigation for key scaffold docs, examples,
   decisions, templates, evals, and roadmap artifacts.
 - Add a v0.2.0 roadmap note outlining must-have, maybe-later, and non-goal scope.
