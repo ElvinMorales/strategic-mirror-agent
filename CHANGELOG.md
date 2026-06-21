@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add a visual artifact map for the 14-bucket taxonomy alignment.
+
 ## 0.1.0
 
 - Bootstrap public-safe Strategic Mirror Agent scaffold.

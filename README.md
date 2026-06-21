@@ -49,6 +49,8 @@ The scaffold aligns to the stable 14-bucket agent artifact taxonomy:
 
 Plans, routers, workflow graphs, delegation, handoffs, resumability, and continuation logic belong under Planning and orchestration. Connectors, MCP, A2A, and host adapters are implementation-edge mappings, not new taxonomy categories.
 
+See the visual and tabular map in [docs/artifact-map.md](docs/artifact-map.md).
+
 ## Memory vs State
 
 Memory is durable, slowly changing context. It answers: would this still matter in three months if nothing was actively worked on?
