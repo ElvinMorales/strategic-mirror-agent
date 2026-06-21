@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Expand the private instance starter guide with copy steps, Git safety,
+  local-only connector guidance, and first-run checklists.
 - Add a visual artifact map for the 14-bucket taxonomy alignment.
 - Add a synthetic public-safe walkthrough for a workplace boundary-setting message.
 
