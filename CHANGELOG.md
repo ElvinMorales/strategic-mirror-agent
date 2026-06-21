@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add framework mapping notes for adapting the scaffold across common agent host environments.
 - Add valid synthetic schema instance examples for Memory, State, connector registry, and response outputs.
 - Add an architecture decision record documenting connectors as adapter-layer
   artifacts.
