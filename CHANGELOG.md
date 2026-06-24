@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add Claude Desktop MCP setup notes and a Memory/State MCP controller contract
+  template.
+
 ## 0.2.0
 
 - Add a release-prep checklist with final release, social, and public-safety

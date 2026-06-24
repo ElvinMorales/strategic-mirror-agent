@@ -24,6 +24,9 @@ content.
 
 - [Private instance guide](private-instance-guide.md) explains how to create a
   private runtime boundary outside the public repo.
+- [Memory/State MCP controller contract](../agent/templates/mcp-memory-state-controller.md)
+  defines a public-safe contract for governed local file access in a private
+  runtime.
 
 ## Framework And Host Adaptation
 
@@ -31,6 +34,8 @@ content.
   to host environments without treating any host as the architecture.
 - [Connector strategy](connector-strategy.md) describes the connector-ready,
   file-first posture.
+- [MCP host adapter](../agent/connectors/host-adapters/mcp.md) records the
+  framework-neutral MCP boundary.
 
 ## Decisions
 
