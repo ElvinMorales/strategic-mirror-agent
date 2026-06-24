@@ -79,6 +79,8 @@ Use the path that matches how you already work:
   file-first private runtime.
 - Path C: Local Markdown or Obsidian, for users who want private notes first
   and will paste approved context into Claude manually.
+- Path D: Claude Desktop with a local MCP server, for users who want Claude
+  Desktop as the local interface to a controlled private folder.
 
 You can start with Path C and move to Path A or Path B later.
 
@@ -252,6 +254,73 @@ Use this path if you are not a developer and want private notes first.
 For this path, your private Markdown folder is the runtime. Claude receives
 only the short, approved context you paste into a chat.
 
+## Path D: Claude Desktop With Local MCP
+
+Claude Desktop can be the local interface for a private Strategic Mirror
+instance. A local Model Context Protocol (MCP) server can provide a controlled
+file-access layer between Claude Desktop and one approved private agent folder.
+
+This public scaffold does not include the MCP server. Use the
+[Memory/State MCP controller contract](agent/templates/mcp-memory-state-controller.md)
+to define a private implementation before enabling file access.
+
+The standard documented Windows configuration path is:
+
+```text
+%APPDATA%\Claude\claude_desktop_config.json
+```
+
+Some managed Windows environments or Microsoft Store/package installations may
+use a package-local path instead, such as:
+
+```text
+%LOCALAPPDATA%\Packages\<Claude package name>\LocalCache\Roaming\Claude\claude_desktop_config.json
+```
+
+Package names and active paths vary by installation. When Claude Desktop
+provides **Settings → Developer → Edit Config**, use that option because it
+opens the active configuration file for that installation.
+
+Configure only a private MCP implementation and approved private agent folder.
+Do not copy a private connector configuration into this public repository.
+
+### Claude Desktop MCP Troubleshooting
+
+If the MCP server does not appear or start:
+
+1. Confirm that you edited the active configuration file.
+2. Restart Claude Desktop completely, including any background process.
+3. Use absolute paths for the server command, script, runtime, and approved
+   private agent folder.
+4. Run the MCP server command manually and resolve startup errors first.
+5. Check Claude Desktop MCP logs for configuration, launch, or permission
+   errors.
+6. Check whether Claude Desktop is installed as a packaged or managed app and
+   therefore uses a package-local configuration path.
+
+### Claude Desktop MCP Safety Boundary
+
+Point local MCP file access only at an approved private Strategic Mirror agent
+folder. Do not point it at:
+
+- A full work drive.
+- Desktop or Downloads.
+- A OneDrive or SharePoint sync root.
+- A broad documents folder.
+- An internal repository.
+- An email export folder.
+- A credential folder.
+- A confidential document folder.
+
+The safe write pattern is:
+
+```text
+propose update → review pending update → apply approved update
+```
+
+`propose_update` must not edit Memory or State directly. Only an explicitly
+approved `apply_update` operation may modify those governed artifacts.
+
 ## First Private Memory And State Setup
 
 Start small. Use synthetic placeholders until you are sure the private location
@@ -375,7 +444,7 @@ not copy confidential or regulated material into unapproved locations.
 
 ## Next Steps
 
-1. Choose Path A, B, or C.
+1. Choose Path A, B, C, or D.
 2. Create the private runtime outside this public repo.
 3. Copy only the templates you need.
 4. Add one small Memory set and one small State entry.

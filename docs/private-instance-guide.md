@@ -257,6 +257,32 @@ Connector guidance for a private runtime:
 - Require human approval before connector-fed context changes Memory or State.
 - Require explicit human approval at the moment of any external side effect.
 
+Claude Desktop may be used as the local interface for a private instance, with
+a local MCP server acting as a controlled file-access layer. Keep that server
+inside the same private runtime boundary. It should expose only narrow,
+allowlisted operations against the approved private agent folder.
+
+Use this governance sequence for Memory and State:
+
+```text
+propose update → review pending update → apply approved update
+```
+
+The proposal step writes a reviewable pending artifact, not Memory or State.
+The apply step is the only operation allowed to modify Memory or State, and it
+requires explicit approval for the specific proposal and destination.
+
+Broad file access is not part of this pattern. Do not point a local MCP server
+at a full work drive, Desktop, Downloads, a OneDrive or SharePoint sync root, a
+broad documents folder, an internal repository, an email export folder, a
+credential folder, or a confidential document folder.
+
+The public-safe
+[Memory/State MCP controller contract](../agent/templates/mcp-memory-state-controller.md)
+defines recommended tools, folder boundaries, approval flow, audit
+expectations, and validation checks. It is a contract template, not runtime
+server code.
+
 Do not add live connector implementation, credentials, private connector config,
 or real workplace system details to the public scaffold.
 
