@@ -24,6 +24,9 @@ content.
 
 - [Private instance guide](private-instance-guide.md) explains how to create a
   private runtime boundary outside the public repo.
+- [Local Memory/State viewer specification](local-memory-state-viewer.md)
+  defines a read-only local observability and review surface over approved
+  private artifacts.
 - [Memory/State MCP controller contract](../agent/templates/mcp-memory-state-controller.md)
   defines a public-safe contract for governed local file access in a private
   runtime.
