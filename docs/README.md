@@ -70,4 +70,8 @@ content.
   patterns.
 - [Schema instances](../examples/schema-instances/) provide valid example JSON
   records for schema validation.
+- [Memory/State update proposal schema](../schemas/memory-state-update-proposal.schema.json)
+  defines inspectable Memory, State, and session-note proposal lifecycles.
 - [Evals](../evals/) provide synthetic cases and a rubric for manual review.
+- [MCP Memory/State update safety evals](../evals/mcp-memory-state-update-safety.jsonl)
+  cover proposal, approval, file-access, lifecycle, and connector boundaries.

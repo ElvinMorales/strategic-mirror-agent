@@ -1,0 +1,50 @@
+{
+  "proposal_id": "proposal-session-note-001",
+  "proposal_type": "session_note",
+  "target_layer": "session_notes",
+  "target_artifact_id": "session-planning-001",
+  "target_file": "session-notes/session-planning-001.md",
+  "operation": "append",
+  "proposed_content": {
+    "note": "The session compared two synthetic outline structures and selected the shorter version for the next draft."
+  },
+  "rationale": "The record belongs to this session and does not itself justify a Memory or State mutation.",
+  "source_context_summary": "Synthetic session content only, with no connector data or private source material.",
+  "privacy_risk": "low",
+  "durability": "session_record",
+  "review_by": "human_owner",
+  "review_required": true,
+  "requires_explicit_approval": true,
+  "approval_status": "approved",
+  "approval": {
+    "approval_id": "approval-session-note-001",
+    "approved_by": "human_owner",
+    "approved_at": "2026-07-01T14:25:00Z",
+    "content_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "target_artifact_id": "session-planning-001"
+  },
+  "created_at": "2026-07-01T14:10:00Z",
+  "session_id": "session-planning-001",
+  "session_summary": "Compared public-safe outline options and chose a concise structure.",
+  "decisions_made": [
+    "Use a three-section outline for the next synthetic draft."
+  ],
+  "follow_ups": [
+    "Draft the first section using only public-safe sample material."
+  ],
+  "memory_candidates": [
+    {
+      "summary": "The user may prefer three-section outlines.",
+      "disposition": "propose_separately"
+    }
+  ],
+  "state_candidates": [
+    {
+      "summary": "Draft the first section during the next planning session.",
+      "disposition": "propose_separately"
+    }
+  ],
+  "privacy_concerns": [
+    "Keep future examples synthetic and exclude private source material."
+  ]
+}

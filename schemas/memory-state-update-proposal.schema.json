@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/memory-state-update-proposal.schema.json",
+  "title": "Memory, State, or Session-Note Update Proposal",
+  "description": "A reviewable proposal artifact. Creating a proposal does not authorize or apply a Memory or State update.",
+  "type": "object",
+  "required": [
+    "proposal_id",
+    "proposal_type",
+    "target_layer",
+    "target_artifact_id",
+    "target_file",
+    "operation",
+    "proposed_content",
+    "rationale",
+    "source_context_summary",
+    "privacy_risk",
+    "durability",
+    "review_by",
+    "review_required",
+    "requires_explicit_approval",
+    "approval_status",
+    "approval",
+    "created_at"
+  ],
+  "properties": {
+    "proposal_id": {
+      "type": "string",
+      "pattern": "^proposal-[a-z0-9][a-z0-9-]{2,63}$"
+    },
+    "proposal_type": {
+      "enum": ["memory_update", "state_update", "session_note"]
+    },
+    "target_layer": {
+      "enum": ["memory", "state", "session_notes"]
+    },
+    "target_artifact_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{1,127}$"
+    },
+    "target_file": {
+      "type": "string",
+      "description": "A logical repo-independent relative target. Runtime implementations must map it through a server-owned allowlist.",
+      "pattern": "^(memory|state|session-notes)/(?!.*\\.\\.(?:/|$))(?!.*//)[a-z0-9][a-z0-9._/-]*\\.(md|json)$"
+    },
+    "operation": {
+      "enum": ["append", "replace", "structured_merge", "mark_stale", "archive"]
+    },
+    "proposed_content": {
+      "description": "Complete reviewable content or a bounded structured update.",
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "minProperties": 1
+        },
+        {
+          "type": "array",
+          "minItems": 1
+        }
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_context_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "privacy_risk": {
+      "enum": ["low", "medium", "high"]
+    },
+    "durability": {
+      "enum": ["durable", "transient", "session_record"]
+    },
+    "review_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The human reviewer role or logical reviewer identifier."
+    },
+    "review_required": {
+      "const": true
+    },
+    "requires_explicit_approval": {
+      "const": true
+    },
+    "approval_status": {
+      "enum": [
+        "pending_review",
+        "approved",
+        "rejected",
+        "applied",
+        "archived"
+      ]
+    },
+    "approval": {
+      "description": "Proposal-specific approval evidence. It must remain null while pending or rejected.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "approval_id",
+            "approved_by",
+            "approved_at",
+            "content_digest",
+            "target_artifact_id"
+          ],
+          "properties": {
+            "approval_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approved_by": {
+              "type": "string",
+              "minLength": 1
+            },
+            "approved_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "content_digest": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            "target_artifact_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "memory_category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason_this_is_durable": {
+      "type": "string",
+      "minLength": 1
+    },
+    "replacement_or_append": {
+      "enum": ["replacement", "append"]
+    },
+    "state_category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stale_after": {
+      "type": "string",
+      "format": "date"
+    },
+    "review_trigger": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": ["active", "waiting", "blocked", "completed", "stale", "archived"]
+    },
+    "priority": {
+      "enum": ["low", "medium", "high"]
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^session-[a-z0-9][a-z0-9-]{2,63}$"
+    },
+    "session_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decisions_made": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "follow_ups": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "memory_candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/candidate"
+      }
+    },
+    "state_candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/candidate"
+      }
+    },
+    "privacy_concerns": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "approval_status": {
+            "enum": ["pending_review", "rejected"]
+          }
+        },
+        "required": ["approval_status"]
+      },
+      "then": {
+        "properties": {
+          "approval": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "approval_status": {
+            "enum": ["approved", "applied"]
+          }
+        },
+        "required": ["approval_status"]
+      },
+      "then": {
+        "properties": {
+          "approval": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ],
+  "oneOf": [
+    {
+      "properties": {
+        "proposal_type": {
+          "const": "memory_update"
+        },
+        "target_layer": {
+          "const": "memory"
+        },
+        "target_file": {
+          "pattern": "^memory/(?!.*\\.\\.(?:/|$))(?!.*//)[a-z0-9][a-z0-9._/-]*\\.(md|json)$"
+        },
+        "operation": {
+          "enum": ["append", "replace"]
+        },
+        "durability": {
+          "const": "durable"
+        }
+      },
+      "required": [
+        "memory_category",
+        "reason_this_is_durable",
+        "replacement_or_append"
+      ]
+    },
+    {
+      "properties": {
+        "proposal_type": {
+          "const": "state_update"
+        },
+        "target_layer": {
+          "const": "state"
+        },
+        "target_file": {
+          "pattern": "^state/(?!.*\\.\\.(?:/|$))(?!.*//)[a-z0-9][a-z0-9._/-]*\\.(md|json)$"
+        },
+        "operation": {
+          "enum": [
+            "append",
+            "replace",
+            "structured_merge",
+            "mark_stale",
+            "archive"
+          ]
+        },
+        "durability": {
+          "const": "transient"
+        }
+      },
+      "required": [
+        "state_category",
+        "stale_after",
+        "review_trigger",
+        "status",
+        "priority"
+      ]
+    },
+    {
+      "properties": {
+        "proposal_type": {
+          "const": "session_note"
+        },
+        "target_layer": {
+          "const": "session_notes"
+        },
+        "target_file": {
+          "pattern": "^session-notes/(?!.*\\.\\.(?:/|$))(?!.*//)[a-z0-9][a-z0-9._/-]*\\.(md|json)$"
+        },
+        "operation": {
+          "const": "append"
+        },
+        "durability": {
+          "const": "session_record"
+        }
+      },
+      "required": [
+        "session_id",
+        "session_summary",
+        "decisions_made",
+        "follow_ups",
+        "memory_candidates",
+        "state_candidates",
+        "privacy_concerns"
+      ]
+    }
+  ],
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "required": ["summary", "disposition"],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "disposition": {
+          "enum": ["propose_separately", "do_not_promote"]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -28,6 +28,21 @@ const checks = [
     reader: readJson
   },
   {
+    schema: "schemas/memory-state-update-proposal.schema.json",
+    example: "examples/schema-instances/memory-state-update-proposal.memory.valid.json",
+    reader: readJson
+  },
+  {
+    schema: "schemas/memory-state-update-proposal.schema.json",
+    example: "examples/schema-instances/memory-state-update-proposal.state.valid.json",
+    reader: readJson
+  },
+  {
+    schema: "schemas/memory-state-update-proposal.schema.json",
+    example: "examples/schema-instances/memory-state-update-proposal.session-note.valid.json",
+    reader: readJson
+  },
+  {
     schema: "schemas/connector-registry.schema.json",
     example: "examples/schema-instances/connector-registry.valid.json",
     reader: readJson
