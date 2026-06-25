@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add a public-safe local Memory/State viewer specification.
 - Add Claude Desktop MCP setup notes and a Memory/State MCP controller contract
   template.
 - Add Memory/State update proposal schema, synthetic examples, and MCP safety
