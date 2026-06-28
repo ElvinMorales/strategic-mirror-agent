@@ -84,7 +84,7 @@ The agent is connector-ready but not connector-dependent. The core experience wo
 
 Connectors are adapter-layer only. They may supply approved input to a private runtime instance, but they must not bypass the memory, state, knowledge, workflow, or guardrail layers. Connector output is evidence to classify and reconcile, not truth to absorb blindly.
 
-No live connector is implemented in v0.1.
+No live connector is implemented in the public scaffold.
 
 ## Public Safety
 
@@ -170,7 +170,7 @@ The link checker validates local Markdown links only. It does not use the networ
 
 Review `evals/cases.jsonl` against `evals/rubric.md`. Each case includes an expected behavior profile rather than a single golden answer, because the agent should reason strategically while preserving voice, confidentiality, and boundary rules.
 
-## Not Included In v0.1
+## Not Included in the Public Scaffold
 
 - Live connectors
 - Email, calendar, chat, or document integrations
