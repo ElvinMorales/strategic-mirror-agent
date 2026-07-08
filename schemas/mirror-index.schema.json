@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/mirror-index.schema.json",
+  "title": "Mirror Index",
+  "description": "A lightweight metadata index over all governed artifacts in a private Strategic Mirror instance. Used by Tier 1 MCP tools to answer what exists and what needs attention without opening any artifact file.",
+  "type": "object",
+  "required": ["index_id", "generated_at", "entries"],
+  "properties": {
+    "index_id": {
+      "type": "string",
+      "description": "Logical identifier for this index snapshot.",
+      "pattern": "^index-[a-z0-9][a-z0-9-]{2,63}$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when this index was last generated."
+    },
+    "entries": {
+      "type": "array",
+      "description": "One entry per governed artifact.",
+      "items": {
+        "$ref": "#/$defs/index_entry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "index_entry": {
+      "type": "object",
+      "required": [
+        "path",
+        "type",
+        "last_modified",
+        "review_date",
+        "status",
+        "privacy_risk",
+        "content_hash",
+        "is_stale",
+        "needs_review"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Logical repo-independent artifact identifier. Runtime implementations must map it through a server-owned allowlist.",
+          "pattern": "^(memory|state|session-notes|pending|applied)/(?!.*\\.\\.(?:/|$))(?!.*//)[a-z0-9][a-z0-9._/-]*\\.(md|json)$"
+        },
+        "type": {
+          "enum": ["memory", "state", "pending", "applied", "session-note"],
+          "description": "Artifact classification. memory and state are governed source layers. pending and applied are proposal lifecycle states. session-note is a bounded session record."
+        },
+        "last_modified": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the most recent write to this artifact."
+        },
+        "review_date": {
+          "type": ["string", "null"],
+          "description": "Date this artifact was last reviewed by the human owner. Null if never reviewed.",
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "format": "date" }
+          ]
+        },
+        "status": {
+          "enum": ["active", "stale", "pending_review", "applied", "archived", "missing_review_date"],
+          "description": "Current operational status of the artifact."
+        },
+        "privacy_risk": {
+          "enum": ["low", "medium", "high"],
+          "description": "Privacy risk level assessed at proposal time or on indexing."
+        },
+        "content_hash": {
+          "type": "string",
+          "description": "SHA-256 digest of the artifact content at last index generation.",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "is_stale": {
+          "type": "boolean",
+          "description": "True if the artifact has passed its stale-after date or has not been reviewed within its review cadence."
+        },
+        "needs_review": {
+          "type": "boolean",
+          "description": "True if the artifact requires human review: stale, missing review date, high privacy risk pending, or flagged by hygiene check."
+        },
+        "stale_after": {
+          "type": ["string", "null"],
+          "description": "Date after which this artifact should be reviewed or archived. Applicable to state and pending entries.",
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "format": "date" }
+          ]
+        },
+        "review_cadence": {
+          "type": ["string", "null"],
+          "description": "Expected review frequency for memory entries, e.g. quarterly.",
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "minLength": 1 }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
