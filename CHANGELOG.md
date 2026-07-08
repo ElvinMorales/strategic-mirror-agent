@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Add MCP update flow performance documentation, tiered tool contract, mirror
+  index schema, update batch schema, synthetic mirror index example, and
+  performance-oriented eval cases.
+- Add explicit read-only and not-source-of-truth callout to the local
+  Memory/State viewer specification.
 - Add a public-safe local Memory/State viewer specification.
 - Add Claude Desktop MCP setup notes and a Memory/State MCP controller contract
   template.

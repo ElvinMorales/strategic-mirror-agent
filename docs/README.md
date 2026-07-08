@@ -30,6 +30,12 @@ content.
 - [Memory/State MCP controller contract](../agent/templates/mcp-memory-state-controller.md)
   defines a public-safe contract for governed local file access in a private
   runtime.
+- [MCP tiered tool design](mcp-tiered-tool-design.md) defines the
+  metadata-first tiered tool contract for instances that need improved token
+  efficiency.
+- [MCP update flow performance](mcp-update-performance.md) describes the
+  bottleneck, the three-tier architecture, and the acceptance criteria trace
+  for issue #42.
 
 ## Framework And Host Adaptation
 
