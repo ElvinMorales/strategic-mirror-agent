@@ -20,6 +20,23 @@ must not become a second data store or an alternate write path.
 This public scaffold documents the pattern only. It does not include a runtime
 viewer, private viewer output, or access to any private instance.
 
+## Read-Only and Not Source of Truth
+
+**The viewer is strictly read-only.** It has no write actions, no apply
+controls, and no path to modify Memory or State. Any future viewer feature
+that changes governed artifacts must route through the proposal-based MCP
+update flow, not through the viewer directly.
+
+**The viewer is not the source of truth.** The canonical source of truth is
+the private Markdown and governed artifact files. The viewer is derived output
+regenerated from those files. A viewer display that appears stale or
+inconsistent should be resolved by regenerating the viewer from the source
+files, not by editing viewer state.
+
+These two constraints hold regardless of the viewer implementation level
+(static generated, local server, or MCP-backed). They are not relaxed in later
+implementation levels.
+
 ## Scope And Boundaries
 
 The MVP viewer is:

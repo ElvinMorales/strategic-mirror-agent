@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/update-batch.schema.json",
+  "title": "Update Proposal Batch",
+  "description": "A batched proposal bundle grouping multiple candidate changes for a single human review pass. Each item in the bundle is a full Memory, State, or session-note update proposal as defined in memory-state-update-proposal.schema.json. Creating a bundle does not authorize or apply any update; every item still requires explicit proposal-specific approval before apply_update may be called.",
+  "type": "object",
+  "required": [
+    "bundle_id",
+    "created_at",
+    "session_ref",
+    "source_paths",
+    "rationale",
+    "review_required",
+    "requires_explicit_approval",
+    "proposals"
+  ],
+  "properties": {
+    "bundle_id": {
+      "type": "string",
+      "description": "Unique identifier for this proposal bundle.",
+      "pattern": "^bundle-[a-z0-9][a-z0-9-]{2,63}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when this bundle was created by propose_update_from_selection."
+    },
+    "session_ref": {
+      "type": "string",
+      "description": "Logical session identifier or session-note artifact path that sourced this bundle.",
+      "minLength": 1
+    },
+    "source_paths": {
+      "type": "array",
+      "description": "The logical artifact paths passed to propose_update_from_selection that produced this bundle.",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Concise explanation of why these artifacts were selected together for one review pass.",
+      "minLength": 1
+    },
+    "review_required": {
+      "const": true,
+      "description": "Always true. A bundle does not grant approval for any of its proposals."
+    },
+    "requires_explicit_approval": {
+      "const": true,
+      "description": "Always true. Each proposal in the bundle requires its own proposal-specific explicit approval before apply_update may be called."
+    },
+    "proposals": {
+      "type": "array",
+      "description": "One or more update proposals, each conforming to memory-state-update-proposal.schema.json. All must have approval_status: pending_review at bundle creation time.",
+      "minItems": 1,
+      "items": {
+        "$ref": "memory-state-update-proposal.schema.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

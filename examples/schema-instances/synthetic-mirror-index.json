@@ -1,0 +1,97 @@
+{
+  "index_id": "index-synthetic-001",
+  "generated_at": "2026-07-07T09:00:00Z",
+  "entries": [
+    {
+      "path": "memory/synthetic-preferences.json",
+      "type": "memory",
+      "last_modified": "2026-06-21T10:00:00Z",
+      "review_date": "2026-07-01",
+      "status": "active",
+      "privacy_risk": "low",
+      "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "is_stale": false,
+      "needs_review": false,
+      "stale_after": null,
+      "review_cadence": "quarterly"
+    },
+    {
+      "path": "memory/synthetic-goals.json",
+      "type": "memory",
+      "last_modified": "2026-05-15T08:30:00Z",
+      "review_date": "2026-05-15",
+      "status": "active",
+      "privacy_risk": "low",
+      "content_hash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "is_stale": false,
+      "needs_review": false,
+      "stale_after": null,
+      "review_cadence": "quarterly"
+    },
+    {
+      "path": "state/synthetic-current-work.json",
+      "type": "state",
+      "last_modified": "2026-07-01T14:00:00Z",
+      "review_date": "2026-07-01",
+      "status": "active",
+      "privacy_risk": "low",
+      "content_hash": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "is_stale": false,
+      "needs_review": false,
+      "stale_after": "2026-07-15",
+      "review_cadence": null
+    },
+    {
+      "path": "state/synthetic-open-decisions.json",
+      "type": "state",
+      "last_modified": "2026-06-10T11:00:00Z",
+      "review_date": "2026-06-10",
+      "status": "stale",
+      "privacy_risk": "medium",
+      "content_hash": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "is_stale": true,
+      "needs_review": true,
+      "stale_after": "2026-06-24",
+      "review_cadence": null
+    },
+    {
+      "path": "pending/proposal-state-001.json",
+      "type": "pending",
+      "last_modified": "2026-07-05T16:00:00Z",
+      "review_date": null,
+      "status": "pending_review",
+      "privacy_risk": "high",
+      "content_hash": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "is_stale": false,
+      "needs_review": true,
+      "stale_after": "2026-07-19",
+      "review_cadence": null
+    },
+    {
+      "path": "applied/proposal-memory-001.json",
+      "type": "applied",
+      "last_modified": "2026-07-01T14:20:00Z",
+      "review_date": "2026-07-01",
+      "status": "applied",
+      "privacy_risk": "low",
+      "content_hash": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "is_stale": false,
+      "needs_review": false,
+      "stale_after": null,
+      "review_cadence": null
+    },
+    {
+      "path": "session-notes/synthetic-session-2026-07-07.json",
+      "type": "session-note",
+      "last_modified": "2026-07-07T08:45:00Z",
+      "review_date": null,
+      "status": "pending_review",
+      "privacy_risk": "low",
+      "content_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "is_stale": false,
+      "needs_review": true,
+      "stale_after": "2026-07-21",
+      "review_cadence": null
+    }
+  ]
+}
