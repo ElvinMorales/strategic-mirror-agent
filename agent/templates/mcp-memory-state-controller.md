@@ -18,6 +18,10 @@ propose update → review pending update → apply approved update
 Memory and State remain governed artifacts. A model or connector may propose a
 change, but it must not silently rewrite either layer.
 
+For instances that need a metadata-first, tiered read strategy to reduce token
+cost, see
+[docs/mcp-tiered-tool-design.md](../../docs/mcp-tiered-tool-design.md).
+
 ## Intended Private-Runtime Use
 
 This contract is for a private, local runtime that has:
