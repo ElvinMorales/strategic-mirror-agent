@@ -101,9 +101,19 @@ proposed content.
 
 Use this to triage what needs review without reading any proposal body.
 
+Before including a sidecar metadata entry in the returned array, the
+implementation must verify that the companion `.pending.md` file still exists
+(a directory listing check -- no content read). An orphaned sidecar (its
+`.pending.md` has been deleted) must be excluded from results rather than
+returned as a phantom proposal. This is a known edge case: sidecar cleanup is
+not atomic, so a brief window exists after deletion where the sidecar may still
+be present. Callers should not assume the absence of a result means the pending
+directory is clean.
+
 Inputs: optional `layer` filter, optional bounded result limit.
 
-Outputs: array of proposal metadata records. No proposed content.
+Outputs: array of proposal metadata records, each confirmed to have a live
+companion file. No proposed content.
 
 #### `detect_hygiene_warnings()`
 
@@ -116,6 +126,12 @@ Detected conditions include:
 - Pending proposals older than a configured threshold.
 - Memory, State, or proposal records with missing review dates.
 - High-privacy-risk proposals.
+
+In v1, `privacy_risk` is hardcoded to `"high"` for all six governed context
+files, so the "high-privacy pending proposal" hygiene condition matches any
+existing pending proposal and provides no discrimination between proposals until
+`privacy_risk` is parameterized per-artifact in v2.
+
 - Proposals that target both Memory and State (invalid; must be flagged, not
   processed).
 - Session notes with Memory or State candidates but no corresponding pending
