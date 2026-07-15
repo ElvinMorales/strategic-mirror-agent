@@ -2,8 +2,8 @@
 
 ## Unreleased
 
-- Add `discard_update` tool design, rejected-proposal schema, synthetic
-  example, and pending-lifecycle eval cases for issue #49.
+- Document `apply_update`'s companion sidecar deletion on archive in the
+  Memory/State MCP controller contract.
 - Add MCP update flow performance documentation, tiered tool contract, mirror
   index schema, update batch schema, synthetic mirror index example, and
   performance-oriented eval cases.
