@@ -191,6 +191,74 @@ Outputs:
   status `pending_review`.
 - Explicit statement that Memory and State were not modified.
 
+### Write Tier: Discard (New)
+
+This tool is new in this design and closes the gap named in issue #49: the
+existing flat and tiered contracts define how a proposal is approved and
+applied, but not how a reviewer rejects one. It sits beside `apply_update` as
+the second and only other tool permitted to resolve a pending proposal.
+
+#### `discard_update(proposal_id, rejection)`
+
+Moves one pending proposal file from the pending directory to a sibling
+rejected directory. It never opens, reads, or writes any file under `memory/`
+or `state/`.
+
+This design uses `outputs/rejected/` (or `updates/rejected/`, matching whichever
+canonical pending directory the instance chose) as a sibling to `pending/` and
+`applied/`, rather than the generic `outputs/archive/` or `updates/archive/`
+wording in the flat controller template, because it matches the private
+server's actual directory naming (`PENDING_DIR`, `APPLIED_DIR`, and now
+`REJECTED_DIR`) rather than the template's older generic archive wording.
+
+Inputs:
+
+- `proposal_id`: the pending proposal to discard.
+- `rejection`: an object carrying `rejected_by` and `reason`.
+
+The `rejection.reason` field is distinct from the proposal's own `rationale`
+field: `rationale` (set at proposal time) explains why the change was
+proposed, while `rejection.reason` (set at discard time) explains why it was
+discarded; the two answer different questions and are not redundant.
+
+Validation:
+
+- Confirm the proposal is still pending. A proposal already `applied`,
+  `rejected`, or `archived` cannot be discarded again.
+- Re-resolve the target against the server-owned allowlist to confirm the
+  proposal still names an allowlisted target artifact.
+- Reject a `rejection` payload missing `rejected_by` or `reason`.
+
+Behavior:
+
+1. Do not open, read, or write any file under `memory/` or `state/`.
+2. Move the pending proposal file from the pending directory to the rejected
+   directory unchanged, except for the added rejection stamp.
+3. If a companion sidecar metadata file exists for the proposal, move it
+   alongside the proposal file into the rejected directory. Unlike
+   `apply_update`, which deletes the sidecar because the proposal's fate is
+   fully captured in the applied record, `discard_update` preserves it: the
+   rejection record benefits from keeping the sidecar's structured metadata
+   next to the human-readable rejected proposal, for anyone auditing why it
+   was discarded.
+4. Set `approval_status` to `rejected` and attach the rejection stamp described
+   in `schemas/rejected-proposal.schema.json`.
+5. Append a minimal audit record.
+
+Outputs:
+
+- Proposal identifier.
+- Target artifact identifier and layer (unchanged from the original proposal).
+- Rejected timestamp.
+- Rejected logical identifier (the proposal's new location in the rejected
+  directory).
+- Status: `rejected`.
+- Explicit statement that Memory and State were not modified.
+
+`discard_update` must fail closed when the proposal is not pending, the target
+no longer resolves against the allowlist, or the rejection payload is
+incomplete.
+
 ## Tool Cost Summary
 
 | Tool | Tier | Opens artifact files? | Writes? |
@@ -204,6 +272,7 @@ Outputs:
 | `propose_update_from_selection` | 3 | Yes (full content) | Pending dir only |
 | `apply_update` (from flat contract) | Write | Yes | Memory or State |
 | `append_session_note` (from flat contract) | Write | No | Session notes only |
+| `discard_update` (new) | Write | No | Pending/rejected dir only |
 
 ## Relationship to Flat Contract Tools
 
@@ -215,6 +284,7 @@ Outputs:
 | `propose_update` (single target) | Extended by `propose_update_from_selection` (multi-path bundle) |
 | `apply_update` | Unchanged; retained from flat contract |
 | `append_session_note` | Unchanged; retained from flat contract |
+| (none) | `discard_update` is new; no flat contract equivalent exists prior to issue #49 |
 
 No tool from the flat contract is removed. A private instance may run both
 contracts during a migration period.

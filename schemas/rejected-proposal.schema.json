@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/rejected-proposal.schema.json",
+  "title": "Rejected Update Proposal",
+  "description": "The record written to the rejected directory by discard_update. It wraps the original pending proposal (memory-state-update-proposal.schema.json) alongside a rejection stamp, mirroring how the base proposal schema's approval stamp binds one proposal, target, and digest. Creating this record never modifies Memory or State.",
+  "type": "object",
+  "required": ["proposal", "rejection"],
+  "properties": {
+    "proposal": {
+      "description": "The original proposal, unchanged except that approval_status is rejected and approval remains null.",
+      "allOf": [
+        { "$ref": "memory-state-update-proposal.schema.json" },
+        {
+          "type": "object",
+          "properties": {
+            "approval_status": {
+              "const": "rejected"
+            },
+            "approval": {
+              "type": "null"
+            }
+          }
+        }
+      ]
+    },
+    "rejection": {
+      "description": "Proposal-specific rejection evidence, mirroring the approval stamp's binding to one proposal, target, and digest. The reason field explains why the proposal was discarded, distinct from the proposal's own rationale field, which explains why it was proposed.",
+      "type": "object",
+      "required": [
+        "rejection_id",
+        "rejected_by",
+        "rejected_at",
+        "reason",
+        "content_digest",
+        "target_artifact_id"
+      ],
+      "properties": {
+        "rejection_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rejected_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rejected_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why this proposal was discarded. Distinct from the proposal's rationale field, which explains why it was proposed."
+        },
+        "content_digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "target_artifact_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
