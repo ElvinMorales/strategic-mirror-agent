@@ -48,6 +48,11 @@ const checks = [
     reader: readJson
   },
   {
+    schema: "schemas/pending-sidecar.schema.json",
+    example: "examples/schema-instances/pending-sidecar.valid.json",
+    reader: readJson
+  },
+  {
     schema: "schemas/connector-registry.schema.json",
     example: "examples/schema-instances/connector-registry.valid.json",
     reader: readJson

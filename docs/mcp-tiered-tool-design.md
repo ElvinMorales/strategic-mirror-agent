@@ -101,14 +101,15 @@ proposed content.
 
 Use this to triage what needs review without reading any proposal body.
 
-Before including a sidecar metadata entry in the returned array, the
-implementation must verify that the companion `.pending.md` file still exists
-(a directory listing check -- no content read). An orphaned sidecar (its
-`.pending.md` has been deleted) must be excluded from results rather than
-returned as a phantom proposal. This is a known edge case: sidecar cleanup is
-not atomic, so a brief window exists after deletion where the sidecar may still
-be present. Callers should not assume the absence of a result means the pending
-directory is clean.
+Each pending proposal may have a companion sidecar metadata file conforming to
+`schemas/pending-sidecar.schema.json`. Before including a sidecar metadata
+entry in the returned array, the implementation must verify that the
+companion `.pending.md` file still exists (a directory listing check -- no
+content read). An orphaned sidecar (its `.pending.md` has been deleted) must
+be excluded from results rather than returned as a phantom proposal. This is a
+known edge case: sidecar cleanup is not atomic, so a brief window exists after
+deletion where the sidecar may still be present. Callers should not assume the
+absence of a result means the pending directory is clean.
 
 Inputs: optional `layer` filter, optional bounded result limit.
 
@@ -234,7 +235,8 @@ Behavior:
 1. Do not open, read, or write any file under `memory/` or `state/`.
 2. Move the pending proposal file from the pending directory to the rejected
    directory unchanged, except for the added rejection stamp.
-3. If a companion sidecar metadata file exists for the proposal, move it
+3. If a companion sidecar metadata file conforming to
+   `schemas/pending-sidecar.schema.json` exists for the proposal, move it
    alongside the proposal file into the rejected directory. Unlike
    `apply_update`, which deletes the sidecar because the proposal's fate is
    fully captured in the applied record, `discard_update` preserves it: the
