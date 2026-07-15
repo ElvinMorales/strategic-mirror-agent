@@ -85,6 +85,9 @@ content.
   defines inspectable Memory, State, and session-note proposal lifecycles.
 - [Rejected proposal schema](../schemas/rejected-proposal.schema.json) defines
   the `discard_update` rejection record for issue #49.
+- [Pending sidecar schema](../schemas/pending-sidecar.schema.json) defines the
+  companion sidecar metadata file referenced by `inspect_pending_updates`,
+  `discard_update`, and `apply_update`, for issue #51.
 - [Evals](../evals/) provide synthetic cases and a rubric for manual review.
 - [MCP Memory/State update safety evals](../evals/mcp-memory-state-update-safety.jsonl)
   cover proposal, approval, file-access, lifecycle, and connector boundaries.

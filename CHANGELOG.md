@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add a public pending-proposal sidecar metadata schema and reference it from
+  the tiered tool design and Memory/State MCP controller contract, replacing
+  generic "companion sidecar metadata file" wording.
 - Document `apply_update`'s companion sidecar deletion on archive in the
   Memory/State MCP controller contract.
 - Document `discard_update`'s companion sidecar move to the rejected
