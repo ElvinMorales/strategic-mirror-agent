@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/pending-sidecar.schema.json",
+  "title": "Pending Proposal Sidecar Metadata",
+  "description": "The companion metadata file that may sit alongside a pending proposal's human-readable body. inspect_pending_updates reads this to answer triage questions without opening the proposal body; discard_update moves it into the rejected directory rather than deleting it. Sidecars exist only for memory_update and state_update proposals moving through the pending review lifecycle; append_session_note writes directly and has no sidecar.",
+  "type": "object",
+  "required": [
+    "filename",
+    "target_file",
+    "rationale",
+    "proposed_at",
+    "snapshot_digest",
+    "privacy_risk"
+  ],
+  "properties": {
+    "filename": {
+      "type": "string",
+      "description": "The sidecar file's own logical filename, colocated with the pending proposal body it describes.",
+      "pattern": "^[a-z0-9][a-z0-9._-]*\\.json$"
+    },
+    "target_file": {
+      "type": "string",
+      "description": "A logical repo-independent relative target. Runtime implementations must map it through a server-owned allowlist. Restricted to memory or state, since only memory_update and state_update proposals carry a pending sidecar.",
+      "pattern": "^(memory|state)/(?!.*\\.\\.(?:/|$))(?!.*//)[a-z0-9][a-z0-9._/-]*\\.(md|json)$"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Carried over from the proposal at creation time; explains why the change was proposed."
+    },
+    "proposed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the proposal (and this sidecar) was created."
+    },
+    "snapshot_digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "Content digest of the proposal body at the time this sidecar was written."
+    },
+    "privacy_risk": {
+      "enum": ["low", "medium", "high"]
+    }
+  },
+  "additionalProperties": false
+}

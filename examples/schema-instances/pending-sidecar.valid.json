@@ -1,0 +1,8 @@
+{
+  "filename": "proposal-state-002.sidecar.json",
+  "target_file": "state/synthetic-open-decisions.json",
+  "rationale": "The synthetic decision has passed its review trigger and is no longer active.",
+  "proposed_at": "2026-07-09T14:30:00Z",
+  "snapshot_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "privacy_risk": "low"
+}
