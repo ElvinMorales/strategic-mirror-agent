@@ -38,6 +38,10 @@ content.
   for issue #42.
 - [MCP tiered tool design](mcp-tiered-tool-design.md) also defines
   `discard_update`, the pending-proposal rejection tool added for issue #49.
+- [MCP tiered tool design](mcp-tiered-tool-design.md) also defines
+  `propose_section_update`, the section-scoped patch proposal tool added for
+  issue #50, including its anchor matching rules and whole-file digest scope
+  decision.
 
 ## Framework And Host Adaptation
 
@@ -88,8 +92,14 @@ content.
 - [Pending sidecar schema](../schemas/pending-sidecar.schema.json) defines the
   companion sidecar metadata file referenced by `inspect_pending_updates`,
   `discard_update`, and `apply_update`, for issue #51.
+- [Section update proposal schema](../schemas/section-update-proposal.schema.json)
+  defines the `{proposal, section}` wrapper `propose_section_update` produces
+  for a single-section patch proposal, for issue #50.
 - [Evals](../evals/) provide synthetic cases and a rubric for manual review.
 - [MCP Memory/State update safety evals](../evals/mcp-memory-state-update-safety.jsonl)
   cover proposal, approval, file-access, lifecycle, and connector boundaries.
 - [MCP pending lifecycle evals](../evals/mcp-pending-lifecycle-cases.md) cover
   `discard_update` discard-then-inspect and discard-then-attempt-apply cases.
+- [MCP section-patch evals](../evals/mcp-section-patch-cases.md) cover
+  `propose_section_update` successful apply, anchor-not-found,
+  ambiguous-anchor, and digest-mismatch cases.
