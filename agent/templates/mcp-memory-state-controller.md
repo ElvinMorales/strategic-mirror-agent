@@ -249,7 +249,8 @@ Behavior:
 1. Write the approved content to the one approved Memory or State target.
 2. Verify the resulting content digest.
 3. Archive the pending proposal with its disposition and timestamps.
-4. If a companion sidecar metadata file exists for the proposal, delete it as
+4. If a companion sidecar metadata file conforming to
+   `schemas/pending-sidecar.schema.json` exists for the proposal, delete it as
    part of archiving. The proposal's fate is now fully captured in the applied
    archive record, so the sidecar is no longer needed.
 5. Append a minimal audit record.
