@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.com/strategic-mirror/rejected-proposal.schema.json",
   "title": "Rejected Update Proposal",
-  "description": "The record written to the rejected directory by discard_update. It wraps the original pending proposal (memory-state-update-proposal.schema.json) alongside a rejection stamp, mirroring how the base proposal schema's approval stamp binds one proposal, target, and digest. Creating this record never modifies Memory or State.",
+  "description": "The record written to the rejected directory by discard_update. It wraps the original pending proposal (memory-state-update-proposal.schema.json) alongside a rejection stamp, mirroring how the base proposal schema's approval stamp binds one proposal, target, and digest. Creating this record never modifies Memory or State. If the discarded proposal was a section-update proposal (schemas/section-update-proposal.schema.json), the optional sibling section key is carried over unchanged so the wrapper's anchor targeting survives the move into the rejected directory; discard_update never nests section inside proposal.",
   "type": "object",
   "required": ["proposal", "rejection"],
   "properties": {
@@ -22,6 +22,26 @@
           }
         }
       ]
+    },
+    "section": {
+      "description": "Present only when the discarded proposal was a section-update proposal. Carried over unchanged from schemas/section-update-proposal.schema.json's section key; absent for a discarded bare (full-file) proposal.",
+      "type": "object",
+      "required": ["anchor"],
+      "properties": {
+        "anchor": {
+          "type": "string",
+          "pattern": "^#{1,6} \\S.*$"
+        },
+        "start_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "end_line": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
     },
     "rejection": {
       "description": "Proposal-specific rejection evidence, mirroring the approval stamp's binding to one proposal, target, and digest. The reason field explains why the proposal was discarded, distinct from the proposal's own rationale field, which explains why it was proposed.",
