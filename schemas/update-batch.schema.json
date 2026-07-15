@@ -54,7 +54,7 @@
     },
     "proposals": {
       "type": "array",
-      "description": "One or more update proposals, each conforming to memory-state-update-proposal.schema.json. All must have approval_status: pending_review at bundle creation time.",
+      "description": "One or more update proposals, each conforming to memory-state-update-proposal.schema.json. All must have approval_status: pending_review at bundle creation time. Section-update proposals (the {proposal, section} wrapper defined in schemas/section-update-proposal.schema.json, issue #50) cannot currently be placed in a bundle -- this array only accepts the bare proposal shape. Adding mixed-shape bundle support is deferred to a follow-up issue.",
       "minItems": 1,
       "items": {
         "$ref": "memory-state-update-proposal.schema.json"

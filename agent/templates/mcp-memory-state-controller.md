@@ -240,20 +240,41 @@ Validation:
 - Confirm the proposal is still pending.
 - Confirm approval is explicit, current, and bound to the proposal, digest,
   target, and layer.
-- Re-resolve the target against the server-owned allowlist.
+- Re-resolve the target against the server-owned allowlist. For a
+  section-update proposal (the `{proposal, section}` wrapper shape), read the
+  target from `proposal.target_file`, not from a top-level field.
 - Confirm the target has not changed since review, or require re-review.
 - Validate the final content again before writing.
 
 Behavior:
 
-1. Write the approved content to the one approved Memory or State target.
-2. Verify the resulting content digest.
-3. Archive the pending proposal with its disposition and timestamps.
-4. If a companion sidecar metadata file conforming to
+1. If the pending proposal is a section-update proposal -- the
+   `{proposal, section}` wrapper shape produced by `propose_section_update`
+   and defined in `schemas/section-update-proposal.schema.json`, rather than
+   the bare shape -- re-resolve `section.anchor` against the *current* full
+   content of the target file before writing anything. Do not trust the
+   proposal's stored `section.start_line` or `section.end_line`; they are a
+   propose-time snapshot for human review only. Apply the same fail-closed
+   anchor rules `propose_section_update` used at proposal time (see
+   [docs/mcp-tiered-tool-design.md](../../docs/mcp-tiered-tool-design.md)):
+   zero matches or multiple matches both abort the apply with no write, even
+   if the anchor resolved cleanly at proposal time. On a single match, splice
+   `proposal.proposed_content` into exactly that section's span and leave
+   every line outside the span byte-for-byte unchanged. For a bare (full-file)
+   proposal, this step does not apply; proceed directly to step 2.
+2. Write the approved content -- the spliced full file for a section-update
+   proposal, or the proposal's full `proposed_content` otherwise -- to the one
+   approved Memory or State target.
+3. Verify the resulting content digest. For a section-update proposal this is
+   still a whole-file digest of the file after splicing, not a digest scoped
+   to the section; see the Digest Scope discussion in
+   [docs/mcp-tiered-tool-design.md](../../docs/mcp-tiered-tool-design.md).
+4. Archive the pending proposal with its disposition and timestamps.
+5. If a companion sidecar metadata file conforming to
    `schemas/pending-sidecar.schema.json` exists for the proposal, delete it as
    part of archiving. The proposal's fate is now fully captured in the applied
    archive record, so the sidecar is no longer needed.
-5. Append a minimal audit record.
+6. Append a minimal audit record.
 
 Outputs:
 

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/strategic-mirror/section-update-proposal.schema.json",
+  "title": "Section-Level Update Proposal",
+  "description": "A reviewable proposal artifact produced by propose_section_update, for replacing one named Markdown ATX-heading section of a governed file without transmitting the full file. Wraps an unmodified memory-state-update-proposal.schema.json instance (whose proposed_content carries only the new section body, not the full file) alongside a sibling section object naming the target anchor. This nesting, rather than adding fields to the base proposal schema, follows the same pattern rejected-proposal.schema.json uses for its rejection stamp and leaves memory-state-update-proposal.schema.json untouched. Creating this record never modifies Memory or State. apply_update always re-resolves section.anchor against the current full target file at apply time using the same fail-closed rules propose_section_update applied at proposal time; section.start_line and section.end_line are a propose-time snapshot for human review only and are never treated as authoritative.",
+  "type": "object",
+  "required": ["proposal", "section"],
+  "properties": {
+    "proposal": {
+      "description": "The underlying proposal, unmodified. proposed_content is the new section body only, not the full file.",
+      "$ref": "memory-state-update-proposal.schema.json"
+    },
+    "section": {
+      "type": "object",
+      "description": "Identifies the single Markdown ATX-heading section this proposal replaces.",
+      "required": ["anchor"],
+      "properties": {
+        "anchor": {
+          "type": "string",
+          "description": "The exact ATX heading line (hashes, one space, heading text) that this proposal's anchor must match by exact, case-sensitive text against the target file. propose_section_update and apply_update both fail closed if the anchor matches zero or more than one heading.",
+          "pattern": "^#{1,6} \\S.*$"
+        },
+        "start_line": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Informational only: the 1-based line number of the matched heading at propose time. Never treated as authoritative; apply_update always re-resolves the anchor fresh against the current file rather than trusting this snapshot."
+        },
+        "end_line": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Informational only: the 1-based line number of the last line of the matched section span at propose time (the line before the next heading of equal or shallower level, or EOF). Never treated as authoritative; see start_line."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

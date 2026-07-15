@@ -1,0 +1,29 @@
+{
+  "proposal": {
+    "proposal_id": "proposal-memory-010",
+    "proposal_type": "memory_update",
+    "target_layer": "memory",
+    "target_artifact_id": "synthetic-current-work",
+    "target_file": "memory/synthetic-current-work.md",
+    "operation": "replace",
+    "proposed_content": "## Preferred Working Hours\n\nSynthetic preference: focus blocks in the morning, syncs after 13:00.\n",
+    "rationale": "The synthetic working-hours preference changed and only this one section needs replacing, not the full file.",
+    "source_context_summary": "A synthetic planning session confirmed a new preferred working-hours pattern.",
+    "privacy_risk": "low",
+    "durability": "durable",
+    "review_by": "human_owner",
+    "review_required": true,
+    "requires_explicit_approval": true,
+    "approval_status": "pending_review",
+    "approval": null,
+    "created_at": "2026-07-14T09:00:00Z",
+    "memory_category": "preferences",
+    "reason_this_is_durable": "Working-hour preferences are stable context reused across sessions.",
+    "replacement_or_append": "replacement"
+  },
+  "section": {
+    "anchor": "## Preferred Working Hours",
+    "start_line": 42,
+    "end_line": 47
+  }
+}

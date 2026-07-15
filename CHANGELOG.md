@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Add a public section-update proposal schema, `propose_section_update` tool
+  documentation with its anchor matching rules and whole-file digest scope
+  decision, an apply_update section-splice behavior branch, and section-patch
+  eval cases, for issue #50.
 - Add a public pending-proposal sidecar metadata schema and reference it from
   the tiered tool design and Memory/State MCP controller contract, replacing
   generic "companion sidecar metadata file" wording.
