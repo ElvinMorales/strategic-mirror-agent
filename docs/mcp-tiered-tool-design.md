@@ -234,9 +234,16 @@ Behavior:
 1. Do not open, read, or write any file under `memory/` or `state/`.
 2. Move the pending proposal file from the pending directory to the rejected
    directory unchanged, except for the added rejection stamp.
-3. Set `approval_status` to `rejected` and attach the rejection stamp described
+3. If a companion sidecar metadata file exists for the proposal, move it
+   alongside the proposal file into the rejected directory. Unlike
+   `apply_update`, which deletes the sidecar because the proposal's fate is
+   fully captured in the applied record, `discard_update` preserves it: the
+   rejection record benefits from keeping the sidecar's structured metadata
+   next to the human-readable rejected proposal, for anyone auditing why it
+   was discarded.
+4. Set `approval_status` to `rejected` and attach the rejection stamp described
    in `schemas/rejected-proposal.schema.json`.
-4. Append a minimal audit record.
+5. Append a minimal audit record.
 
 Outputs:
 

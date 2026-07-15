@@ -4,6 +4,8 @@
 
 - Document `apply_update`'s companion sidecar deletion on archive in the
   Memory/State MCP controller contract.
+- Document `discard_update`'s companion sidecar move to the rejected
+  directory in the tiered tool design.
 - Add MCP update flow performance documentation, tiered tool contract, mirror
   index schema, update batch schema, synthetic mirror index example, and
   performance-oriented eval cases.
