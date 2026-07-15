@@ -43,6 +43,11 @@ const checks = [
     reader: readJson
   },
   {
+    schema: "schemas/rejected-proposal.schema.json",
+    example: "examples/schema-instances/rejected-proposal.valid.json",
+    reader: readJson
+  },
+  {
     schema: "schemas/connector-registry.schema.json",
     example: "examples/schema-instances/connector-registry.valid.json",
     reader: readJson

@@ -1,0 +1,38 @@
+{
+  "proposal": {
+    "proposal_id": "proposal-state-002",
+    "proposal_type": "state_update",
+    "target_layer": "state",
+    "target_artifact_id": "synthetic-open-decisions",
+    "target_file": "state/synthetic-open-decisions.json",
+    "operation": "mark_stale",
+    "proposed_content": {
+      "item": "Mark the synthetic outline decision as stale.",
+      "next_action": "Re-evaluate at the next planning cycle.",
+      "status": "stale"
+    },
+    "rationale": "The synthetic decision has passed its review trigger and is no longer active.",
+    "source_context_summary": "A synthetic planning session flagged this item as no longer relevant.",
+    "privacy_risk": "low",
+    "durability": "transient",
+    "review_by": "human_owner",
+    "review_required": true,
+    "requires_explicit_approval": true,
+    "approval_status": "rejected",
+    "approval": null,
+    "created_at": "2026-07-10T09:00:00Z",
+    "state_category": "active_plan",
+    "stale_after": "2026-07-20",
+    "review_trigger": "Review when the next planning cycle starts.",
+    "status": "stale",
+    "priority": "low"
+  },
+  "rejection": {
+    "rejection_id": "rejection-state-002",
+    "rejected_by": "human_owner",
+    "rejected_at": "2026-07-11T10:15:00Z",
+    "reason": "The synthetic decision is still active; the stale mark was premature.",
+    "content_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "target_artifact_id": "synthetic-open-decisions"
+  }
+}
