@@ -36,6 +36,8 @@ content.
 - [MCP update flow performance](mcp-update-performance.md) describes the
   bottleneck, the three-tier architecture, and the acceptance criteria trace
   for issue #42.
+- [MCP tiered tool design](mcp-tiered-tool-design.md) also defines
+  `discard_update`, the pending-proposal rejection tool added for issue #49.
 
 ## Framework And Host Adaptation
 
@@ -81,6 +83,10 @@ content.
   records for schema validation.
 - [Memory/State update proposal schema](../schemas/memory-state-update-proposal.schema.json)
   defines inspectable Memory, State, and session-note proposal lifecycles.
+- [Rejected proposal schema](../schemas/rejected-proposal.schema.json) defines
+  the `discard_update` rejection record for issue #49.
 - [Evals](../evals/) provide synthetic cases and a rubric for manual review.
 - [MCP Memory/State update safety evals](../evals/mcp-memory-state-update-safety.jsonl)
   cover proposal, approval, file-access, lifecycle, and connector boundaries.
+- [MCP pending lifecycle evals](../evals/mcp-pending-lifecycle-cases.md) cover
+  `discard_update` discard-then-inspect and discard-then-attempt-apply cases.
